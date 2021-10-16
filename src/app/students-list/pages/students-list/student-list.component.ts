@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Student } from 'src/app/shared/interface/student.interface';
 import { StudentListService } from 'src/app/shared/services/student-list.service';
+import {FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -10,24 +11,13 @@ import { StudentListService } from 'src/app/shared/services/student-list.service
   styleUrls: ['./students-list.component.css']
 })
 export class StudentListComponent implements OnInit {
-  nameSortTurn = true
-  quantitySortTurn = true
   studentList:Student[]  =  []
-  sortSelected:keyof Student = "name"
   showAddingRow = false
   showEdited = false
-  idEdited = 0
+  idEdited = 1
+  personalForm!: FormGroup;
   addingInputs = {
-    name:"",
-    surname:"",
-    phone:"",
-    email:"",
-    birthday:"",
-    group:"",
-    speciality:""
-  }
-  editedInputs = {
-    name:"",
+    name: "",
     surname:"",
     phone:"",
     email:"",
@@ -45,22 +35,13 @@ export class StudentListComponent implements OnInit {
       console.log(this.studentList);
     }
   }
-  sortBy(array:Student[], prop: keyof Student) {
-    if(this.sortSelected == "name" || this.quantitySortTurn){
-      if(this.nameSortTurn){
-        return array.sort((a, b) => a[prop] > b[prop] ? 1 : a[prop] === b[prop] ? 0 : -1);
-      }else{
-        return array.sort((a, b) => a[prop] < b[prop] ? 1 : a[prop] === b[prop] ? 0 : -1);
-      }
-    }else return 0
-  }
-  changeSortSelected(sort:keyof Student){
-    this.sortSelected = sort
-    if(sort=="name"){
-      this.nameSortTurn = !this.nameSortTurn
-    }else{
-      this.quantitySortTurn = !this.quantitySortTurn
-    }
+  sortBy(array: Student[]) {
+    this.studentList = array.sort((x,y) => {
+      if (x.surname < y.surname) return - 1
+      if (x.surname > y.surname) return 1
+      return 0
+    });
+    console.log(this.studentList)
   }
 
   startAdding(){
@@ -82,9 +63,9 @@ export class StudentListComponent implements OnInit {
       await this.getStudentList()
     }
   }
-  async endEdited(result:boolean) {
+  async endEdited() {
     try {
-      let res = await this.listService.editStudent(this.studentList[this.idEdited])
+      await this.listService.editStudent(this.studentList[this.idEdited])
       this.showEdited = false;
       await this.getStudentList()
     } catch (error) {

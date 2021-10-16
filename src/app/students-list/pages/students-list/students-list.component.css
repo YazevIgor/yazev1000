@@ -38,3 +38,6 @@
     right: 5px;
     background-color: white;
 }
+.has-error {
+    border: 1px solid red;
+}

@@ -1,18 +1,24 @@
+
+<div>
+  Сортировка по имени A-z
+  <button (click)="sortBy(studentList)">Отсортировать</button>
+</div>
+
+
 <table class="table">
   <thead>
     <tr>
-      <th scope="col" style="cursor: pointer;" (click)="changeSortSelected('surname') ">Фамилия</th>
-      <th scope="col" style="cursor: pointer;" (click)="changeSortSelected('group') ">Имя</th>
-      <th scope="col" style="cursor: pointer;" (click)="changeSortSelected('group') ">Группа</th>
-      <th scope="col" style="cursor: pointer;" (click)="changeSortSelected('group') ">Специализация</th>
-      <th scope="col" style="cursor: pointer;" (click)="changeSortSelected('group') ">Почта</th>
-      <th scope="col" style="cursor: pointer;" (click)="changeSortSelected('group') ">Телефон</th>
-      <th scope="col" style="cursor: pointer;" (click)="changeSortSelected('group') ">Дата рождения</th>
+      <th scope="col" style="cursor: pointer;">Фамилия</th>
+      <th scope="col" style="cursor: pointer;">Имя</th>
+      <th scope="col" style="cursor: pointer;">Группа</th>
+      <th scope="col" style="cursor: pointer;">Специализация</th>
+      <th scope="col" style="cursor: pointer;">Почта</th>
+      <th scope="col" style="cursor: pointer;">Телефон</th>
+      <th scope="col" style="cursor: pointer;">Дата рождения</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let student of studentList" >
-
       <td>{{student.surname}}</td>
       <td>{{student.name}}</td>
       <td>{{student.group}}</td>
@@ -45,16 +51,13 @@
       <td><input type="text" id="birthdayEdit" #nameInput="ngModel" [(ngModel)]="studentList[idEdited].birthday" required minlength="3"
                  placeholder={{studentList[idEdited].birthday}} class="form-control addingInputs"></td>
       <td class="d-flex flex-row justify-content-between" style="height: 2.6rem;">
-        <button class="UIButs btn-success" (click)="endEdited(true)">
+        <button class="UIButs btn-success" (click)="endEdited()">
           ok
         </button>
-
       </td>
     </tr>
 
-
-
-    <tr id="addingRow" [ngStyle]="{'display': showAddingRow? 'table-row':'none'}">
+    <tr id="addingRow" [ngStyle]="{'display': showAddingRow? 'table-row':'none'}" >
       <td><input type="text" id="surnameInput" #nameInput="ngModel" [(ngModel)]="addingInputs.surname" required minlength="3"
                  placeholder="Фамилия" class="form-control addingInputs"></td>
       <td><input type="text" id="nameInput" #nameInput="ngModel" [(ngModel)]="addingInputs.name" required minlength="3"
@@ -65,7 +68,7 @@
                  placeholder="Специальность" class="form-control addingInputs"></td>
       <td><input type="text" id="emailInput" #nameInput="ngModel" [(ngModel)]="addingInputs.email" required minlength="3"
                  placeholder="Почта" class="form-control addingInputs"></td>
-      <td><input type="text" id="phoneInput" #nameInput="ngModel" [(ngModel)]="addingInputs.phone" required minlength="3"
+      <td><input type="text" id="phoneInput" #nameInput="ngModel" [(ngModel)]="addingInputs.phone" required minlength="11"
                  placeholder="Телефон" class="form-control addingInputs"></td>
       <td><input type="text" id="birthdayInput" #nameInput="ngModel" [(ngModel)]="addingInputs.birthday" required minlength="3"
                  placeholder="Дата рождения" class="form-control addingInputs"></td>
@@ -79,9 +82,9 @@
       </td>
     </tr>
 
-    <tr class="table-dark" >
-      <td (click)="startAdding()">Добавить нового студента</td>
-      <td></td>
+    <tr>
+      <button (click)="startAdding()">Добавить нового студента</button>
+
     </tr>
 
   </tbody>
