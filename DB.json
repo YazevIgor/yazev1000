@@ -1,0 +1,34 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Igor",
+      "surname": "Yazev",
+      "phone": 8999333444,
+      "email": "IgorYazev@email.com",
+      "birthday": "01.02.2002",
+      "group": "191-324",
+      "speciality": "САПР"
+    },
+    {
+      "name": "Sanya",
+      "surname": "sanya",
+      "phone": "866666666666",
+      "email": "snanya@sanya.com",
+      "birthday": "01.01.2001",
+      "group": "191-324",
+      "speciality": "SAPR",
+      "id": 2
+    },
+    {
+      "name": "David",
+      "surname": "David",
+      "phone": "89655643432",
+      "email": "david@david.com",
+      "birthday": "01.01.2001",
+      "group": "191-323",
+      "speciality": "KIS",
+      "id": 3
+    }
+  ]
+}
