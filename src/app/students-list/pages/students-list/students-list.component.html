@@ -36,22 +36,22 @@
     </tr>
 
     <tr id="editing" [ngStyle]="{'display': showEdited? 'table-row':'none'}">
-      <td><input type="text" id="surnameEdit" #nameInput="ngModel" [(ngModel)]="studentList[idEdited].surname" required minlength="3"
+      <td><input type="text" id="surnameEdit" #nameInput2="ngModel" [(ngModel)]="studentList[idEdited].surname" required minlength="3"
                  value={{studentList[idEdited].surname}} class="form-control addingInputs"></td>
-      <td><input type="text" id="nameEdit" #nameInput="ngModel" [(ngModel)]="studentList[idEdited].name" required minlength="3"
+      <td><input type="text" id="nameEdit" #nameInput2="ngModel" [(ngModel)]="studentList[idEdited].name" required minlength="3"
                  placeholder={{studentList[idEdited].name}} class="form-control addingInputs"></td>
-      <td><input type="text" id="groupEdit" #nameInput="ngModel" [(ngModel)]="studentList[idEdited].group" required minlength="3"
+      <td><input type="text" id="groupEdit" #nameInput2="ngModel" [(ngModel)]="studentList[idEdited].group" required minlength="3"
                  placeholder={{studentList[idEdited].group}} class="form-control addingInputs"></td>
-      <td><input type="text" id="specialityEdit" #nameInput="ngModel" [(ngModel)]="studentList[idEdited].speciality" required minlength="3"
+      <td><input type="text" id="specialityEdit" #nameInput2="ngModel" [(ngModel)]="studentList[idEdited].speciality" required minlength="3"
                  placeholder={{studentList[idEdited].speciality}} class="form-control addingInputs"></td>
-      <td><input type="text" id="emailEdit" #nameInput="ngModel" [(ngModel)]="studentList[idEdited].email" required minlength="3"
+      <td><input type="text" id="emailEdit" #nameInput2="ngModel" [(ngModel)]="studentList[idEdited].email" required minlength="3"
                  placeholder={{studentList[idEdited].email}} class="form-control addingInputs"></td>
-      <td><input type="text" id="phoneEdit" #nameInput="ngModel" [(ngModel)]="studentList[idEdited].phone" required minlength="3"
+      <td><input type="text" id="phoneEdit" #nameInput2="ngModel" [(ngModel)]="studentList[idEdited].phone" required minlength="3"
                  placeholder={{studentList[idEdited].phone}} class="form-control addingInputs"></td>
-      <td><input type="text" id="birthdayEdit" #nameInput="ngModel" [(ngModel)]="studentList[idEdited].birthday" required minlength="3"
+      <td><input type="text" id="birthdayEdit" #nameInput2="ngModel" [(ngModel)]="studentList[idEdited].birthday" required minlength="3"
                  placeholder={{studentList[idEdited].birthday}} class="form-control addingInputs"></td>
       <td class="d-flex flex-row justify-content-between" style="height: 2.6rem;">
-        <button class="UIButs btn-success" (click)="endEdited()">
+        <button class="UIButs btn-success" (click)="endEdited()" [disabled]="nameInput2.errors?.required|| nameInput.errors?.minlength">
           ok
         </button>
       </td>
@@ -73,7 +73,7 @@
       <td><input type="text" id="birthdayInput" #nameInput="ngModel" [(ngModel)]="addingInputs.birthday" required minlength="3"
                  placeholder="Дата рождения" class="form-control addingInputs"></td>
       <td class="d-flex flex-row justify-content-between" style="height: 2.6rem;">
-        <button class="UIButs btn-success" (click)="endAdding(true)">
+        <button class="UIButs btn-success" (click)="endAdding(true)" [disabled]="nameInput.errors?.required|| nameInput.errors?.minlength">
           ok
         </button>
         <button class="UIButs btn-danger" (click)="endAdding(false)">
