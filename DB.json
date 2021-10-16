@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Igor",
-      "surname": "Yazev",
+      "surname": "Yazev1",
       "phone": 8999333444,
       "email": "IgorYazev@email.com",
       "birthday": "01.02.2002",
@@ -12,7 +12,7 @@
     },
     {
       "name": "Sanya",
-      "surname": "sanya",
+      "surname": "Sanya",
       "phone": "866666666666",
       "email": "snanya@sanya.com",
       "birthday": "01.01.2001",
@@ -22,7 +22,7 @@
     },
     {
       "name": "David",
-      "surname": "david",
+      "surname": "David",
       "phone": "89655643432",
       "email": "david@david.com",
       "birthday": "01.01.2001",

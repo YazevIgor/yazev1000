@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { Student } from 'src/app/shared/interface/student.interface';
 import { StudentListService } from 'src/app/shared/services/student-list.service';
-import {FormGroup, Validators} from "@angular/forms";
-
 
 @Component({
   selector: 'app-shop-list',
@@ -14,8 +12,7 @@ export class StudentListComponent implements OnInit {
   studentList:Student[]  =  []
   showAddingRow = false
   showEdited = false
-  idEdited = 1
-  personalForm!: FormGroup;
+  idEdited = 0
   addingInputs = {
     name: "",
     surname:"",
@@ -28,21 +25,21 @@ export class StudentListComponent implements OnInit {
   constructor(private listService:StudentListService) { }
   async getStudentList(){
     try{
-        this.studentList = await this.listService.getStudents()
+        this.studentList = await this.listService.getStudents();
     }catch(error){
       console.log(error)
     }finally{
       console.log(this.studentList);
     }
   }
-  sortBy(array: Student[]) {
-    this.studentList = array.sort((x,y) => {
-      if (x.surname < y.surname) return - 1
-      if (x.surname > y.surname) return 1
-      return 0
-    });
-    console.log(this.studentList)
-  }
+  // sortBy(array: Student[]) {
+  //   this.studentList = array.sort((x,y) => {
+  //     if (x.surname < y.surname) return - 1
+  //     if (x.surname > y.surname) return 1
+  //     return 0
+  //   });
+  //   console.log(this.studentList)
+  // }
 
   startAdding(){
     this.showAddingRow = true
