@@ -1,0 +1,88 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" style="cursor: pointer;" (click)="changeSortSelected('surname') ">Фамилия</th>
+      <th scope="col" style="cursor: pointer;" (click)="changeSortSelected('group') ">Имя</th>
+      <th scope="col" style="cursor: pointer;" (click)="changeSortSelected('group') ">Группа</th>
+      <th scope="col" style="cursor: pointer;" (click)="changeSortSelected('group') ">Специализация</th>
+      <th scope="col" style="cursor: pointer;" (click)="changeSortSelected('group') ">Почта</th>
+      <th scope="col" style="cursor: pointer;" (click)="changeSortSelected('group') ">Телефон</th>
+      <th scope="col" style="cursor: pointer;" (click)="changeSortSelected('group') ">Дата рождения</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of studentList" >
+
+      <td>{{student.surname}}</td>
+      <td>{{student.name}}</td>
+      <td>{{student.group}}</td>
+      <td>{{student.speciality}}</td>
+      <td>{{student.email}}</td>
+      <td>{{student.phone}}</td>
+      <td>{{student.birthday}}</td>
+
+      <td class="d-flex flex-row justify-content-between">
+        <div class="editBut" style="color:red;" (click)="deleteRow(student.id)">
+          X
+        </div>
+      </td>
+      <td (click)="startEdited(student.id)">Редактировать</td>
+    </tr>
+
+    <tr id="editing" [ngStyle]="{'display': showEdited? 'table-row':'none'}">
+      <td><input type="text" id="surnameEdit" #nameInput="ngModel" [(ngModel)]="studentList[idEdited].surname" required minlength="3"
+                 value={{studentList[idEdited].surname}} class="form-control addingInputs"></td>
+      <td><input type="text" id="nameEdit" #nameInput="ngModel" [(ngModel)]="studentList[idEdited].name" required minlength="3"
+                 placeholder={{studentList[idEdited].name}} class="form-control addingInputs"></td>
+      <td><input type="text" id="groupEdit" #nameInput="ngModel" [(ngModel)]="studentList[idEdited].group" required minlength="3"
+                 placeholder={{studentList[idEdited].group}} class="form-control addingInputs"></td>
+      <td><input type="text" id="specialityEdit" #nameInput="ngModel" [(ngModel)]="studentList[idEdited].speciality" required minlength="3"
+                 placeholder={{studentList[idEdited].speciality}} class="form-control addingInputs"></td>
+      <td><input type="text" id="emailEdit" #nameInput="ngModel" [(ngModel)]="studentList[idEdited].email" required minlength="3"
+                 placeholder={{studentList[idEdited].email}} class="form-control addingInputs"></td>
+      <td><input type="text" id="phoneEdit" #nameInput="ngModel" [(ngModel)]="studentList[idEdited].phone" required minlength="3"
+                 placeholder={{studentList[idEdited].phone}} class="form-control addingInputs"></td>
+      <td><input type="text" id="birthdayEdit" #nameInput="ngModel" [(ngModel)]="studentList[idEdited].birthday" required minlength="3"
+                 placeholder={{studentList[idEdited].birthday}} class="form-control addingInputs"></td>
+      <td class="d-flex flex-row justify-content-between" style="height: 2.6rem;">
+        <button class="UIButs btn-success" (click)="endEdited(true)">
+          ok
+        </button>
+
+      </td>
+    </tr>
+
+
+
+    <tr id="addingRow" [ngStyle]="{'display': showAddingRow? 'table-row':'none'}">
+      <td><input type="text" id="surnameInput" #nameInput="ngModel" [(ngModel)]="addingInputs.surname" required minlength="3"
+                 placeholder="Фамилия" class="form-control addingInputs"></td>
+      <td><input type="text" id="nameInput" #nameInput="ngModel" [(ngModel)]="addingInputs.name" required minlength="3"
+                 placeholder="Имя" class="form-control addingInputs"></td>
+      <td><input type="text" id="groupInput" #nameInput="ngModel" [(ngModel)]="addingInputs.group" required minlength="3"
+                 placeholder="Группа" class="form-control addingInputs"></td>
+      <td><input type="text" id="specialityInput" #nameInput="ngModel" [(ngModel)]="addingInputs.speciality" required minlength="3"
+                 placeholder="Специальность" class="form-control addingInputs"></td>
+      <td><input type="text" id="emailInput" #nameInput="ngModel" [(ngModel)]="addingInputs.email" required minlength="3"
+                 placeholder="Почта" class="form-control addingInputs"></td>
+      <td><input type="text" id="phoneInput" #nameInput="ngModel" [(ngModel)]="addingInputs.phone" required minlength="3"
+                 placeholder="Телефон" class="form-control addingInputs"></td>
+      <td><input type="text" id="birthdayInput" #nameInput="ngModel" [(ngModel)]="addingInputs.birthday" required minlength="3"
+                 placeholder="Дата рождения" class="form-control addingInputs"></td>
+      <td class="d-flex flex-row justify-content-between" style="height: 2.6rem;">
+        <button class="UIButs btn-success" (click)="endAdding(true)">
+          ok
+        </button>
+        <button class="UIButs btn-danger" (click)="endAdding(false)">
+         nope
+        </button>
+      </td>
+    </tr>
+
+    <tr class="table-dark" >
+      <td (click)="startAdding()">Добавить нового студента</td>
+      <td></td>
+    </tr>
+
+  </tbody>
+</table>
